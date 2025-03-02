@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const NewCampaign = () => {
   const { user } = useContext(AuthContext);
@@ -31,6 +32,26 @@ const NewCampaign = () => {
       userName: user.displayName
     } 
     console.log(newCampaign)
+    fetch("http://localhost:5000/campaigns",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newCampaign)
+    })
+    .then((res)=> res.json())
+    .then(data =>{
+      if(data.insertedId){
+        Swal.fire({
+          title: 'Successfully Campaign added',
+          text: 'Do you want to continue',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+      }
+    })
+
+
   }
   return (
     <div>
