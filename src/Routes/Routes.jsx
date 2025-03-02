@@ -4,6 +4,7 @@ import Login from "../Components/Login";
 import Register from "../Components/Register";
 import PrivateNewCampaign from "../Private/PrivateNewCampaign";
 import NewCampaign from "../Components/NewCampaign";
+import AllCampaigns from "../Components/AllCampaigns";
 
 const Router = createBrowserRouter([
     {
@@ -17,6 +18,11 @@ const Router = createBrowserRouter([
             {
                 path:"/register",
                 element: <Register ></Register>
+            },
+            {
+                path:"/allCampaigns",
+                element: <AllCampaigns></AllCampaigns>,
+                loader: ()=> fetch("http://localhost:5000/campaigns")
             },
             {
                 path:"/addCampaign",

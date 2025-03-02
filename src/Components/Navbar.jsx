@@ -24,7 +24,7 @@ const Navbar = () => {
 
   const links = <>
       <NavLink className="mr-2" to="/">Home</NavLink>
-      <NavLink className="mr-2" to="/">All Campaign</NavLink>
+      <NavLink to="/allCampaigns" className="mr-2">All Campaign</NavLink>
       {
         user &&<NavLink className="mr-2" to="/addCampaign">New Campaign</NavLink>
       }

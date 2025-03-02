@@ -31,7 +31,7 @@ const NewCampaign = () => {
       userEmail: user.email,
       userName: user.displayName
     } 
-    console.log(newCampaign)
+    console.log(newCampaign);
     fetch("http://localhost:5000/campaigns",{
       method: "POST",
       headers: {
@@ -49,6 +49,10 @@ const NewCampaign = () => {
           confirmButtonText: 'Cool'
         })
       }
+      form.reset();
+      setSelectedDate(null);
+      setDescription("");
+      setSelectedValue("Campaign type");
     })
 
 
