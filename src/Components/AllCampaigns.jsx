@@ -10,7 +10,7 @@ const AllCampaigns = () => {
       </h1>
 
       {/* table */}
-      <div className="max-w-[1140px] mx-auto mt-10 px-3">
+      <div className="max-w-[1140px] min-h-[70vh] mx-auto mt-10 px-3">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}

@@ -3,7 +3,7 @@ import Navbar from "./Navbar"
 
 const Home = () => {
   return (
-    <div>
+    <div className="min-h-screen ">
       <nav>
         <Navbar></Navbar>
       </nav>
@@ -11,6 +11,7 @@ const Home = () => {
         <Outlet></Outlet>
       </section>
     </div>
+
   )
 }
 

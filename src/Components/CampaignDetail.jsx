@@ -6,7 +6,7 @@ const CampaignDetail = () => {
   const { campaignType, deadline, description, thumbnail, minimumAmount,title, userName } =
     data;
   return (
-    <div className="min-h-[60vh] max-w-[1140px] mx-auto flex flex-col md:flex-row  gap-5  p-3">
+    <div className="min-h-[80vh] max-w-[1140px] mx-auto flex flex-col md:flex-row  gap-5  p-3">
         <div className=" rounded-lg flex-1">
             <img src={thumbnail} className="h-full object-cover" alt="" />
         </div>
