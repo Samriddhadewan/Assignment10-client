@@ -1,11 +1,17 @@
-import { useContext } from "react"
-import { AuthContext } from "../Provider/AuthProvider"
+import { Outlet } from "react-router-dom"
+import Navbar from "./Navbar"
 
 const Home = () => {
-    const {name} = useContext(AuthContext);
   return (
-    <div>{name}</div>
+    <div>
+      <nav>
+        <Navbar></Navbar>
+      </nav>
+      <section>
+        <Outlet></Outlet>
+      </section>
+    </div>
   )
 }
 
-export default Home;
+export default Home
