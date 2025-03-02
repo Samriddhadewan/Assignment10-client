@@ -1,13 +1,30 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom"
+import { AuthContext } from "../Provider/AuthProvider";
 const Register = () => {
+    const {HandleCreateUser,handleUpdateUser} = useContext(AuthContext)
+
     const handleSubmitForm = (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const photoURL = form.photo.value;
-        const user = {name, email, photoURL};
-        console.log(user)
+        const password = form.password.value;
+
+        // create user with profile update here 
+        HandleCreateUser(email,password)
+        .then((result)=>{
+            handleUpdateUser({
+                displayName: name,
+                photoURL: photoURL
+            })
+            console.log(result.user);
+        })
+        .catch((error)=> {
+            const errorCode = error.code;
+            console.log(errorCode);
+        })
     }
   return (
     <div>
