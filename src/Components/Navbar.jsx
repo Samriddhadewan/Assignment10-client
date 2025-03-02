@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
     const {user, handleUserLogout} = useContext(AuthContext);
@@ -8,6 +9,11 @@ const Navbar = () => {
     const handleLogOut = ()=>{
         handleUserLogout()
         .then(()=>{
+            Swal.fire({
+                icon: "success",
+                title: "Successful",
+                text: "Successfully Logged Out",
+              });
 
         })
         .catch(()=>{
@@ -19,7 +25,12 @@ const Navbar = () => {
   const links = <>
       <NavLink className="mr-2" to="/">Home</NavLink>
       <NavLink className="mr-2" to="/">All Campaign</NavLink>
-      {/* <NavLink to="/">Home</NavLink> */}
+      {
+        user &&<NavLink className="mr-2" to="/addCampaign">New Campaign</NavLink>
+      }
+
+
+
       {/* <NavLink to="/">Home</NavLink> */}
   </>
   return (
