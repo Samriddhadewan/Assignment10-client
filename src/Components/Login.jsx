@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
-    const {handleUserLogin} = useContext(AuthContext);
+    const {handleUserLogin,handleLoginWithGoogle} = useContext(AuthContext);
 
     const handleLoginUser = e =>{
         e.preventDefault();
@@ -21,8 +21,15 @@ const Login = () => {
             console.log(errorCode, errorMessage)
             
         })
-        
-    
+    }
+    const handleGoogleLogin =()=>{
+        handleLoginWithGoogle()
+        .then(()=>{
+
+        })
+        .catch(()=>{
+
+        })
     }
 
   return (
@@ -41,7 +48,7 @@ const Login = () => {
           <button className="btn bg-[#0E7A81] text-white mt-4">Login</button>
         </fieldset>
       </form>
-      <button className="border btn py-2 rounded-b-sm bg-[#4285F4]  text-white">Continue With Google</button>
+      <button onClick={handleGoogleLogin} className="border btn py-2 rounded-b-sm bg-[#4285F4]  text-white">Continue With Google</button>
       <h1 className="pt-4">Don't have an Account? <Link className="underline text-blue-800" to="/register">Register now</Link></h1>
     </div>
         </div>

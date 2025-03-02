@@ -48,9 +48,22 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
+  <div className="flex items-center gap-2">
+        {
+          user && user?.email ? 
+          <>
+            <img className="w-15 h-15 object-cover border-black border rounded-full" src={user.photoURL} alt="" />
+            <p className="font-semibold">{user.displayName}</p>
+          </>
+          : 
+          (<div></div>)
+        }
+
+      </div>
+
       {
         user?.displayName ? 
-        <button onClick={handleLogOut} className="btn bg-[#0E7A81] text-white ">Log Out</button>
+        <button onClick={handleLogOut} className="btn ml-2 bg-[#0E7A81] text-white ">Log Out</button>
         :
         <Link to="/login" className="btn bg-[#0E7A81] text-white">Log in</Link>
       }
