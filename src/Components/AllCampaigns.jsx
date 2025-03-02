@@ -1,9 +1,8 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllCampaigns = () => {
   const allCampaigns = useLoaderData();
-  console.log(allCampaigns);
   return (
     <div className="mt-10">
       <h1 className="text-center text-4xl font-semibold">
@@ -21,6 +20,7 @@ const AllCampaigns = () => {
                 <th>Campaign Name</th>
                 <th>Campaign type</th>
                 <th>Campaign Deadline</th>
+                <th>Campaign Added by</th>
                 <th>Minimum Amount</th>
                 <th>Actionable</th>
               </tr>
@@ -33,9 +33,12 @@ const AllCampaigns = () => {
                     <td>{cam?.title}</td>
                     <td>{cam?.campaignType}</td>
                     <td>{cam?.deadline}</td>
+                    <td>{cam?.userName}</td>
                     <td>{cam?.minimumAmount}$</td>
                     <td>
-                        <button className="btn bg-[#0E7A81] text-white py-2">see more</button>
+                        <Link to={`/campaigns/${cam._id}`} className="btn w-[110px] bg-[#0E7A81] text-white">
+                            See more
+                        </Link>
                     </td>
                   </tr>
                 </>

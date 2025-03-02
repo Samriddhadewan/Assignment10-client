@@ -13,16 +13,19 @@ const AuthProvider = ({children}) => {
 
     // create user auth here 
     const HandleCreateUser = (email, password)=>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // update user profile 
     const handleUpdateUser = (updateData) =>{
+        setLoading(true)
         return updateProfile(auth.currentUser, updateData);
     }
 
     // user log in 
     const handleUserLogin = (email, password)=>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -41,6 +44,7 @@ const AuthProvider = ({children}) => {
     useEffect( ()=> {
         const unSubscribe = onAuthStateChanged(auth, (currentUser)=>{
             setUser(currentUser);
+            setLoading(false)
         })
         return ()=> {
             unSubscribe();
@@ -54,7 +58,8 @@ const AuthProvider = ({children}) => {
         handleUserLogin,
         user,
         handleUserLogout,
-        handleLoginWithGoogle
+        handleLoginWithGoogle,
+        loading
     }
     return (
     <AuthContext.Provider value={authInfo}>
