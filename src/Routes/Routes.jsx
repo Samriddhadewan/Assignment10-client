@@ -7,6 +7,8 @@ import NewCampaign from "../Components/NewCampaign";
 import AllCampaigns from "../Components/AllCampaigns";
 import CampaignDetail from "../Components/CampaignDetail";
 import PrivateCampaignDetails from "../Private/PrivateCampaignDetails";
+import PrivateMyCampaign from "../Private/PrivateMyCampaign";
+import MyCampaign from "../Components/MyCampaign";
 
 const Router = createBrowserRouter([
   {
@@ -41,6 +43,13 @@ const Router = createBrowserRouter([
           <PrivateCampaignDetails><CampaignDetail></CampaignDetail></PrivateCampaignDetails>),
         loader: ({params}) => fetch(`http://localhost:5000/campaigns/${params.id}`)  
       },
+      {
+        path: "/myCampaign/:email",
+        element: <PrivateMyCampaign>
+          <MyCampaign></MyCampaign>
+        </PrivateMyCampaign>,
+        loader: ({params}) => fetch(`http://localhost:5000/myCampaign/${params.email}`)
+      }
     ],
   },
 ]);

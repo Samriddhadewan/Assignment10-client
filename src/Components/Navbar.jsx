@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
     const {user, handleUserLogout} = useContext(AuthContext);
+    console.log(user)
 
     const handleLogOut = ()=>{
         handleUserLogout()
@@ -28,6 +29,10 @@ const Navbar = () => {
       {
         user &&<NavLink className="mr-2" to="/addCampaign">New Campaign</NavLink>
       }
+      {
+        user && <NavLink to={`/myCampaign/:${user?.email}`}>My Campaign</NavLink>
+      }
+
 
 
 
