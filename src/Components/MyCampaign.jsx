@@ -1,11 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import { useLoaderData } from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 const MyCampaign = () => {
   const data = useLoaderData();
-  console.log(data);
+  const [myCampaign, setMyCampaign] = useState(data)
+  
+  const handleDeleteCampaign = (id)=>{
+    console.log(id)
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+
+        fetch(`http://localhost:5000/campaigns/${id}`, {
+          method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data.deletedCount > 1){
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          }
+          const filteredUsers = myCampaign.filter(user => user._id !== id)
+          setMyCampaign(filteredUsers);
+        })
+      }
+    });
+  }
+  
   return (
     <div>
       <h1 className='text-center text-4xl font-semibold'>My campaigns {data.length}</h1>
@@ -27,7 +62,7 @@ const MyCampaign = () => {
     <tbody>
       {/* row 1 */}
       {
-        data.map((campaign, idx) => <>
+        myCampaign.map((campaign, idx) => <>
         <tr key={campaign._id}>
         <th>{idx + 1}</th>
         <td>{campaign?.title}</td>
@@ -38,7 +73,7 @@ const MyCampaign = () => {
           <div className='flex gap-3'>
             <button className='btn btn-info text-xl text-white
             '><MdEdit /></button>
-            <button className='btn btn-error text-white text-xl'><AiOutlineDelete />
+            <button onClick={()=> handleDeleteCampaign(campaign?._id)} className='btn btn-error text-white text-xl'><AiOutlineDelete />
             </button>
           </div>
         </td>
