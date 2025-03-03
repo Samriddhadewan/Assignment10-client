@@ -30,7 +30,7 @@ const Navbar = () => {
         user &&<NavLink className="mr-2" to="/addCampaign">New Campaign</NavLink>
       }
       {
-        user && <NavLink to={`/myCampaign/:${user?.email}`}>My Campaign</NavLink>
+        user && <NavLink to={`/myCampaign/${user?.email}`}>My Campaign</NavLink>
       }
 
 
