@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai';
 import { MdDelete, MdEdit } from 'react-icons/md';
-import { useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 import Swal from 'sweetalert2';
 
 const MyCampaign = () => {
@@ -9,7 +9,6 @@ const MyCampaign = () => {
   const [myCampaign, setMyCampaign] = useState(data)
   
   const handleDeleteCampaign = (id)=>{
-    console.log(id)
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -71,8 +70,10 @@ const MyCampaign = () => {
         <td>{campaign?.campaignType}</td>
         <td>
           <div className='flex gap-3'>
+            <Link to={`/updateCampaign/${campaign?._id}`}>
             <button className='btn btn-info text-xl text-white
             '><MdEdit /></button>
+            </Link>
             <button onClick={()=> handleDeleteCampaign(campaign?._id)} className='btn btn-error text-white text-xl'><AiOutlineDelete />
             </button>
           </div>

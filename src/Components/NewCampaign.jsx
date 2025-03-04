@@ -54,8 +54,6 @@ const NewCampaign = () => {
       setDescription("");
       setSelectedValue("Campaign type");
     })
-
-
   }
   return (
     <div>
