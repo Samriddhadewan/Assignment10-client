@@ -26,7 +26,7 @@ const CampaignDetail = () => {
     const donateValue = form.donate.value;
     const intDonateValue = parseInt(donateValue);
     if (intDonateValue < minimumAmount) {
-      setError(`minimum donation amount is ${minimumAmount}`);
+      setError(`minimum donation amount is ${minimumAmount}$`);
       return;
     }
 
