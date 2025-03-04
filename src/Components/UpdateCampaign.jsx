@@ -44,9 +44,12 @@ const UpdateCampaign = () => {
                 confirmButtonText: 'Cool'
               })
             }
+            setThumbnaill("")
+            setUpdateTitle("")
             setSelectedDate(null);
             setDescription("");
             setSelectedValue("Campaign type");
+            setUpdateMinimum(null)
           })
       
   
@@ -123,7 +126,7 @@ const UpdateCampaign = () => {
                    />
                  </div>
                  <button className="btn bg-[#0E7A81] text-white mt-4">
-                   Create New Campaign
+                   Update This Campaign
                  </button>
                </fieldset>
              </form>

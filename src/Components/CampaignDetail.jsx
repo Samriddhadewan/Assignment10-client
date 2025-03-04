@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const CampaignDetail = () => {
+  const {user} = useContext(AuthContext);
+  console.log(user)
   const [error, setError] = useState("");
 
   const data = useLoaderData();
@@ -37,6 +40,7 @@ const CampaignDetail = () => {
       title,
       userName,
       userEmail,
+      donatedUserEmail:user.email
     };
     fetch(`http://localhost:5000/donation`, {
       method: "POST",
