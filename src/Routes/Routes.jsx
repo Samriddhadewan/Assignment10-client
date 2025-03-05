@@ -12,12 +12,17 @@ import MyCampaign from "../Components/MyCampaign";
 import UpdateCampaign from "../Components/UpdateCampaign";
 import PrivateMyDonation from "../Private/PrivateMyDonation";
 import MyDonation from "../Components/MyDonation";
+import HomePage from "../Components/HomePage";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
     children: [
+      {
+        path:"/",
+        element: <HomePage></HomePage>
+      },
       {
         path: "/login",
         element: <Login></Login>,
