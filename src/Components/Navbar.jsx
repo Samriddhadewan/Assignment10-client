@@ -56,7 +56,9 @@ const Navbar = () => {
         }
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">RaiseIt </a>
+    <Link to="/">
+    <button className="text-3xl font-semibold">RaiseIt</button>
+    </Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
