@@ -13,11 +13,13 @@ import UpdateCampaign from "../Components/UpdateCampaign";
 import PrivateMyDonation from "../Private/PrivateMyDonation";
 import MyDonation from "../Components/MyDonation";
 import HomePage from "../Components/HomePage";
+import ErrorPage from "../Components/ErrorPage";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path:"/",
