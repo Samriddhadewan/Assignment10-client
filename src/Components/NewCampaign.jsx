@@ -31,8 +31,7 @@ const NewCampaign = () => {
       userEmail: user.email,
       userName: user.displayName
     } 
-    console.log(newCampaign);
-    fetch("http://localhost:5000/campaigns",{
+    fetch("https://server-side-seven-psi.vercel.app/campaigns",{
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 const UpdateCampaign = () => {
   
   const data = useLoaderData();
-  console.log(data);
   const {title, deadline, description:des,campaignType, minimumAmount,thumbnail, _id} = data;
     const [thumbnaill, setThumbnaill] = useState(thumbnail );
     const [updateTitle, setUpdateTitle] = useState(title );
@@ -27,7 +26,7 @@ const UpdateCampaign = () => {
         deadline: selectedDate.toISOString().split("T")[0],
         minimumAmount: parseInt(updateMinimum)
       }
-      fetch(`http://localhost:5000/campaigns/${_id}`, {
+      fetch(`https://server-side-seven-psi.vercel.app/campaigns/${_id}`, {
         method: "PUT",
         headers: {
           "content-type" : "application/json"

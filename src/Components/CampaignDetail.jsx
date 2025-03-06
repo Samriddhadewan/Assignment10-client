@@ -5,7 +5,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const CampaignDetail = () => {
   const {user} = useContext(AuthContext);
-  console.log(user)
   const [error, setError] = useState("");
 
   const data = useLoaderData();
@@ -42,7 +41,7 @@ const CampaignDetail = () => {
       userEmail,
       donatedUserEmail:user.email
     };
-    fetch(`http://localhost:5000/donation`, {
+    fetch(`https://server-side-seven-psi.vercel.app/donation`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

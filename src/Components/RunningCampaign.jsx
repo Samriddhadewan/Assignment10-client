@@ -4,12 +4,11 @@ import RunningCampaignDetails from './RunningCampaignDetails';
 const RunningCampaign = () => {
     const [campaigns, setCampaigns] = useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5000/myItems`)
+        fetch(`https://server-side-seven-psi.vercel.app/myItems`)
         .then(res=> res.json())
         .then(result => setCampaigns(result));
     } ,[])
 
-    console.log(campaigns);
   return (
     <div className='mt-8 text-center font-semibold mb-14'>
         <h1 className='text-3xl'>Running Campaigns</h1>

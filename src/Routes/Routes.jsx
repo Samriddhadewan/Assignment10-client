@@ -36,7 +36,7 @@ const Router = createBrowserRouter([
       {
         path: "/allCampaigns",
         element: <AllCampaigns></AllCampaigns>,
-        loader: () => fetch("http://localhost:5000/campaigns"),
+        loader: () => fetch("https://server-side-seven-psi.vercel.app/campaigns"),
       },
       {
         path: "/addCampaign",
@@ -51,26 +51,26 @@ const Router = createBrowserRouter([
         path: "/campaigns/:id",
         element: (
           <PrivateCampaignDetails><CampaignDetail></CampaignDetail></PrivateCampaignDetails>),
-        loader: ({params}) => fetch(`http://localhost:5000/campaigns/${params.id}`)  
+        loader: ({params}) => fetch(`https://server-side-seven-psi.vercel.app/campaigns/${params.id}`)  
       },
       {
         path: "/myCampaign/:email",
         element: <PrivateMyCampaign>
           <MyCampaign></MyCampaign>
         </PrivateMyCampaign>,
-        loader: ({params}) => fetch(`http://localhost:5000/myCampaign/${params.email}`)
+        loader: ({params}) => fetch(`https://server-side-seven-psi.vercel.app/myCampaign/${params.email}`)
       },
       {
         path: "/updateCampaign/:id",
         element: <UpdateCampaign></UpdateCampaign>,
-        loader: ({params}) => fetch(`http://localhost:5000/campaigns/${params.id}`)
+        loader: ({params}) => fetch(`https://server-side-seven-psi.vercel.app/campaigns/${params.id}`)
       },
       {
         path:"/myDonation/:email",
         element: <PrivateMyDonation>
           <MyDonation></MyDonation>
         </PrivateMyDonation>,
-        loader: ({params}) => fetch(`http://localhost:5000/myDonation/${params.email}`)
+        loader: ({params}) => fetch(`https://server-side-seven-psi.vercel.app/myDonation/${params.email}`)
       }
     ],
   },
