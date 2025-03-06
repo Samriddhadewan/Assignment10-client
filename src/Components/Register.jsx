@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 const Register = () => {
+  const [error, setError] = useState("")
   const { HandleCreateUser, handleUpdateUser } = useContext(AuthContext);
 
   const handleSubmitForm = (e) => {
@@ -12,6 +13,22 @@ const Register = () => {
     const email = form.email.value;
     const photoURL = form.photo.value;
     const password = form.password.value;
+
+
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      setError("Password must contain at least one uppercase letter.");
+      return;
+    }
+    if (!/[a-z]/.test(password)) {
+      setError("Password must contain at least one lowercase letter.");
+      return;
+    }
+
 
     // create user with profile update here
     HandleCreateUser(email, password)
@@ -25,7 +42,7 @@ const Register = () => {
           title: "Successful",
           text: "Successfully Registered Your Account",
         });
-
+        setError("")
         form.reset();
       })
       .catch((error) => {
@@ -68,6 +85,9 @@ const Register = () => {
                 className="input w-full"
                 placeholder="Enter Password"
               />
+              {
+                error && <p className="text-red-500">{error}</p>
+              }
               <button className="btn bg-[#0E7A81] text-white mt-4">
                 Register
               </button>
