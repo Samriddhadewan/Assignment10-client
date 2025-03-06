@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "./Navbar"
+import Footer from "./Footer"
 
 const Home = () => {
   return (
@@ -9,6 +10,9 @@ const Home = () => {
       </nav>
       <section>
         <Outlet></Outlet>
+      </section>
+      <section className="mt-10">
+        <Footer></Footer>
       </section>
     </div>
 
